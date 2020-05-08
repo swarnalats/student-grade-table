@@ -5,9 +5,10 @@ class GradeTable {
 
     updateGrades(grades){
         var tbody = (this.tableElement).querySelector('tbody');  
-        $(tbody).empty();
+        tbody.innerHtml = '';
 
         var tableHeads = Object.entries(grades);
+
         for(var i=0; i < tableHeads.length ; i++) {
             var tableRow = document.createElement('tr');    
            
@@ -24,7 +25,7 @@ class GradeTable {
             tableRow.appendChild(studentCourse);
             tableRow.appendChild(studentGrade);
 
-            this.tableElement.appendChild(tableRow);            
+            tbody.appendChild(tableRow);            
         }
     }
 }
