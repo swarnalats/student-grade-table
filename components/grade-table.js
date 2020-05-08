@@ -18,7 +18,7 @@ class GradeTable {
             studentCourse.textContent = tableHeads[i][1].course;
 
             var studentGrade = document.createElement('td');
-            studentGrade.textContent = tableHeads[i][1].course;
+            studentGrade.textContent = tableHeads[i][1].grade;
 
             tableRow.appendChild(studentName);
             tableRow.appendChild(studentCourse);
