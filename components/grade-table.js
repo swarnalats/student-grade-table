@@ -5,7 +5,7 @@ class GradeTable {
 
     updateGrades(grades){
         var tbody = (this.tableElement).querySelector('tbody');  
-        tbody.innerHtml = '';
+        tbody.innerHTML = '';
 
         var tableHeads = Object.entries(grades);
 
