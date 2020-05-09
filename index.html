@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.css">
-    <title>Student Grade <Table></Table></title>
+    <!--<title>Student Grade <Table></Table></title> -->
 </head>
 <body>
-    
-    <div style="border:2px black" class="container">
-    <h1>Student Grade Table </h1>
+    <header id="pageheader">
+        <div>
+            <div class="row justify-content-between">
+               <div class="col-3">
+                     <h4> Student Grade Table</h4>          
+               </div>
+               <div class="col-3">
+                     Average Grade 
+                     <span class="badge badge-secondary"></span>
+               </div>
+            </div>            
+        </div>  
+    </header>
     <table class="table table-striped" id="sgt">
         <thead>
             <tr style="border: 2px black">
@@ -18,15 +28,14 @@
                 <th>Grade</th>
             </tr>
         </thead>
-        <tbody>
-           
+        <tbody>           
 
         </tbody>
     </table>
-</div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script src="components/app.js"> </script>
 <script src="components/grade-table.js"> </script>
+<script src="components/page-header.js"> </script>
 <script src="main.js"></script>
 </html>
