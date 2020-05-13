@@ -1,6 +1,7 @@
 class GradeTable {
-    constructor(tableElement) {
+    constructor(tableElement,noGradesElement) {
         this.tableElement = tableElement;
+        this.noGradesElement = noGradesElement;
     }
 
     updateGrades(grades){
@@ -9,23 +10,37 @@ class GradeTable {
 
         var tableHeads = Object.entries(grades);
 
-        for(var i=0; i < tableHeads.length ; i++) {
-            var tableRow = document.createElement('tr');    
-           
-            var studentName = document.createElement('td');
-            studentName.textContent = tableHeads[i][1].name;
+        for(var i=0; i < tableHeads.length ; i++) 
+            tbody.appendChild(this.renderGradeRow(tableHeads[i][1] , this.deleteGrade ));           
+    }
+    onDeleteClick(deleteGrade){
+        this.deleteGrade = deleteGrade;
+    }
+    renderGradeRow(data, deleteGrade){ 
+        var newGradeRow = document.createElement('tr');
 
-            var studentCourse = document.createElement('td');
-            studentCourse.textContent = tableHeads[i][1].course;
+        var newName = document.createElement('td');
+        newName.textContent = data.name; 
 
-            var studentGrade = document.createElement('td');
-            studentGrade.textContent = tableHeads[i][1].grade;
+        var newCourse = document.createElement('td');
+        newCourse.textContent = data.course; 
 
-            tableRow.appendChild(studentName);
-            tableRow.appendChild(studentCourse);
-            tableRow.appendChild(studentGrade);
+        var newGrade = document.createElement('td');
+        newGrade.textContent = data.grade; 
 
-            tbody.appendChild(tableRow);            
-        }
+        var newButton = document.createElement('td');
+        var deleteButton = document.createElement('BUTTON');
+        deleteButton.innerHTML = "DELETE";
+        deleteButton.style.class = "btn btn-danger";
+        deleteButton.style.backgroundColor = "red"; 
+        deleteButton.addEventListener("click", function () { deleteGrade(data.id)}); 
+        newButton.appendChild(deleteButton); 
+       
+        newGradeRow.appendChild(newName);
+        newGradeRow.appendChild(newCourse);
+        newGradeRow.appendChild(newGrade);
+        newGradeRow.appendChild(newButton);
+
+        return newGradeRow;
     }
 }
