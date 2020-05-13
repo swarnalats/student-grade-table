@@ -37,28 +37,9 @@ class App {
                     {
                         "X-Access-Token": "l7M4qpGu"
                     }
-            });  
- 
-    }
-    //postGrades(name, course, grade) {
-    //     $.ajax({
-    //         method:"POST",
-    //         url:"https://sgt.lfzprototypes.com/api/grades",
-    //         data:
-    //         {
-    //             "name": name,
-    //             "course": course,
-    //             "grade": grade
-    //         },
-    //         headers:
-    //                 {
-    //                     "X-Access-Token": "l7M4qpGu"
-    //         },
-    //         success:this.handleCreateGradesSuccess,
-    //         error:this.handleCreteGradesError, 
-    //     });
-    // }
-  
+            });   
+    }   
+
     createGrade(name, course, grade){
         $.ajax({
             method:"POST",
@@ -77,12 +58,14 @@ class App {
             error:this.handleCreteGradesError, 
         });
     }
+
     handleCreateGradeError(error){
         console.error(error);
     }
     handleCreateGradeSuccess(){
         this.getGrades();
-    }    
+    }
+
     deleteGrade(id){
         $.ajax({
             method: "DELETE",
@@ -95,12 +78,14 @@ class App {
             error:this.handleDeleteGradeError
         });
     }
+
     handleDeleteGradeError(error){
         console.error(error);
     }
     handleDeleteGradeSuccess(){
         this.getGrades();
-    }    
+    }
+        
     start(){
         this.getGrades();
         this.gradeForm.onSubmit(this.createGrade);
