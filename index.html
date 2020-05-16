@@ -6,52 +6,49 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">    
 </head>
-<body>    
-    <header id="pageheader">
-        <div>
-            <div class="row justify-content-between">
-               <div class="col-6">
-                     <h4> Student Grade Table</h4>   
-                         
-               </div>
-               <div class="col-6">
-                     Average Grade 
-                     <span class="badge badge-secondary"></span>
-               </div>
-            </div>            
-        </div>  
-    </header>    
-        <div class="row justify-content-between">
-           <div class="col-6">       
-             <table class="table table-striped" id="sgt">
-                <thead>
-                   <tr >
-                        <th>Student Name</th>
-                        <th>Course</th>
-                        <th>Grade</th>
-                        <th>Operations</th>
-                   </tr>
-                </thead>
-                <tbody>           
-
-                </tbody>
-             </table>
+<body>  
+    <div class="container-fluid">  
+        <div class="row" id="pageheader">   
+            <div class="col-sm-6 bg"> 
+                <h4> Student Grade Table</h4> 
             </div> 
-            <div class="col-6"> 
+            <div class="col-sm-6 bg" >  
+                Average Grade 
+                <span class="badge badge-secondary"></span>
+            </div>
+        </div>       
+        <div class="row">   
+            <div class="col-sm-6 bg">                                        
+                   <table class="table table-striped" id="sgt">
+                        <thead>
+                            <tr >
+                                <th>Student Name</th>
+                                    <th>Course</th>
+                                    <th>Grade</th>
+                                    <th>Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>           
+                
+                        </tbody>
+                    </table>
+            </div>  
+            <div class="col-sm-6 bg">                    
                     <form id="studentform">
                         <div style="margin:55px 0 0 46px;font-size:20px;display:inline-block;background-color: lightgray; "><i class="fa fa-user" ></i></div><!--
-                        --><div style="display:inline-block"><input type="text" name="name" placeholder="Enter your name"></div><!--
+                        --><div style="display:inline-block"><input type="text" name="name" placeholder="Enter your name" id="studentName"></div><!--
                         --><div><div style="margin:5px 0 0 43px;font-size: 20px;display:inline-block;background-color: lightgray;"><i class="fa fa-list-alt" ></i></div><!--
-                        --><div style="display:inline-block"><input type="text" name="course" placeholder="Course" size="10"></div>
+                        --><div style="display:inline-block"><input type="text" name="course" placeholder="Course" id="studentCourse" size="10"></div>
                         </div>
                             <div><div style="margin:5px 0 0 42px;font-size: 20px;display:inline-block;background-color: lightgray"><i class="fa fa-graduation-cap" ></i> </div><!--
-                        --><div style="display:inline-block"><input type="text" name="grade" placeholder="Course" size="10"></div>
+                        --><div style="display:inline-block"><input type="text" name="grade" placeholder="grade" id="studentGrade" size="10"></div>
                         </div>
-                        <input style="margin:10px 0 0 70px;background-color: green;" class="btn" type="submit" value="Add">
+                        <input style="margin:10px 0 0 70px;background-color: green;" class="btn" type="submit" value="Add" id="submitButton">
                         <input style="border-style:solid black" class="btn" type="reset" value="Cancel">  
-                    </form>
-            </div>    
-         </div>  
+                    </form>         
+            </div>
+        </div> 
+    </div>        
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script src="components/app.js"> </script>

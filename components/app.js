@@ -25,6 +25,10 @@ class App {
         this.deleteGrade = this.deleteGrade.bind(this);
         this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
         this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
+        this.editGradeId = this.editGradeId.bind(this);
+        this.editGrade = this.editGrade.bind(this);
+        this.handleEditGradeError = this.handleEditGradeError.bind(this);
+        this.handleEditGradeSuccess = this.handleEditGradeSuccess.bind(this);
     }
 
     getGrades() {
@@ -85,10 +89,35 @@ class App {
     handleDeleteGradeSuccess(){
         this.getGrades();
     }
-        
+    editGrade(name,course,grade){      
+         $.ajax({
+            method:"PATCH",
+            url:"https://sgt.lfzprototypes.com/api/grades/"+ this.id, 
+            data:{
+                "name":name,
+                "course":course,
+                "grade":grade
+            },
+            headers: {
+                "X-Access-Token": "l7M4qpGu"
+            },
+            success:this.handleEditGradeSuccess,
+            error:this.handleEditGradeError
+        });
+    }
+    editGradeId(id){
+        this.id = id; 
+    }
+    handleEditGradeSuccess() {
+        this.getGrades();
+    }
+    handleEditGradeError(error){
+        console.error(error);
+    }        
     start(){
         this.getGrades();
-        this.gradeForm.onSubmit(this.createGrade);
+        this.gradeForm.onSubmit(this.createGrade, this.editGrade);
         this.gradeTable.onDeleteClick(this.deleteGrade);
+        this.gradeTable.onEditClick(this.editGradeId);        
     }
 }
