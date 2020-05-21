@@ -37,8 +37,12 @@ class GradeTable {
         var operationsButton = document.createElement('td');
         
         var editButton = document.createElement('button');
-        editButton.innerHTML = "EDIT";
-        editButton.style.backgroundColor = "lightblue";
+        var createFontEdit = document.createElement('i');
+        createFontEdit.className= 'fas fa-edit';
+        createFontEdit.style.color ="blue";
+        editButton.appendChild(createFontEdit);
+       
+       
         editButton.addEventListener('click', function () { 
             //When clicked start the edit process
             document.getElementById('studentName').value = data.name;
@@ -49,9 +53,13 @@ class GradeTable {
         });    
 
         var deleteButton = document.createElement('button');
-        deleteButton.innerHTML = "DELETE";
         deleteButton.style.class = "btn btn-danger";
-        deleteButton.style.backgroundColor = "red"; 
+        
+        var createFontDelete = document.createElement('i');
+        createFontDelete.className= 'fa fa-trash';
+        createFontDelete.style.color ="red";
+        deleteButton.appendChild(createFontDelete);
+
         deleteButton.addEventListener("click", function () { deleteGrade(data.id)}); 
         
         operationsButton.appendChild(editButton); 
