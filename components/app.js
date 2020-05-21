@@ -4,6 +4,7 @@ class App {
     }
 
     handleGetGradesSuccess(grades) {
+        this.cacheGrades = grades;
         this.gradeTable.updateGrades(grades); 
         var average = 0;
         var totalGrade = 0;
@@ -19,8 +20,8 @@ class App {
         this.gradeForm = gradeForm;
         this.handleGetGradesError = this.handleGetGradesError.bind(this);
         this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
-        this.createGrade = this.createGrade.bind(this);
-        this.handleCreateGradeError = this.handleGetGradesError.bind(this);
+        this.createGrade= this.createGrade.bind(this);
+        this.handleCreateGradeError = this.handleCreateGradeError.bind(this);
         this.handleCreateGradeSuccess = this.handleCreateGradeSuccess.bind(this);
         this.deleteGrade = this.deleteGrade.bind(this);
         this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
@@ -58,19 +59,21 @@ class App {
                     {
                         "X-Access-Token": "l7M4qpGu"
             },
-            success:this.handleCreateGradesSuccess,
-            error:this.handleCreteGradesError, 
+            success:this.handleCreateGradeSuccess,
+            error:this.handleCreateGradeError, 
         });
     }
 
     handleCreateGradeError(error){
         console.error(error);
     }
-    handleCreateGradeSuccess(){
-        this.getGrades();
+    handleCreateGradeSuccess(response){                
+        this.cacheGrades.push(response);
+        this.getGrades(); 
     }
 
     deleteGrade(id){
+        this.deleteId = id; 
         $.ajax({
             method: "DELETE",
             url: "https://sgt.lfzprototypes.com/api/grades/"+id , 
@@ -87,8 +90,13 @@ class App {
         console.error(error);
     }
     handleDeleteGradeSuccess(){
+        for(var i=0; i<this.cacheGrades.length;i++) {
+             if(this.cacheGrades[i].id == this.deleteId)
+                this.cacheGrades.splice(i,1); 
+        }
         this.getGrades();
-    }
+    }    
+
     editGrade(name,course,grade){      
          $.ajax({
             method:"PATCH",
@@ -108,8 +116,15 @@ class App {
     editGradeId(id){
         this.id = id; 
     }
-    handleEditGradeSuccess() {
-        this.getGrades();
+    handleEditGradeSuccess(editGrade) {
+        for(var i=0; i<this.cacheGrades.length;i++) {
+            if(this.cacheGrades[i].id == editGrade.id){
+                this.cacheGrades[i].name = editGrade.name;
+                this.cacheGrades[i].course = editGrade.course;
+                this.cacheGrades[i].grade = editGrade.grade;
+            }
+        }
+       this.getGrades();
     }
     handleEditGradeError(error){
         console.error(error);

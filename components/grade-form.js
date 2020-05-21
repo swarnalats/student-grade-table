@@ -14,10 +14,13 @@ class GradeForm {
         var formCourse = formObj.get("course");
         var formGrade = formObj.get("grade");
 
-        if(document.getElementById('submitButton').value == "Add")            
-            this.createGrade(formName, formCourse, formGrade);
-        else            
-            this.editGrade(formName, formCourse, formGrade);       
+        if(document.getElementById('submitButton').value == "Add")             
+            this.createGrade(formName, formCourse, formGrade);          
+        else     
+        {         
+            this.editGrade(formName, formCourse, formGrade);   
+            document.getElementById('submitButton').value = 'Add';
+        }        
         event.target.reset();        
     }
 }
