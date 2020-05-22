@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">    
-</head>
-<body>    
-    <header id="pageheader">
-        <div>
-            <div class="row justify-content-between">
-               <div class="col-6">
-                     <h4> Student Grade Table</h4>   
-                         
-               </div>
-               <div class="col-6">
-                     Average Grade 
-                     <span class="badge badge-secondary"></span>
-               </div>
-            </div>            
-        </div>  
-    </header>    
-        <div class="row justify-content-between">
-           <div class="col-6">       
-             <table class="table table-striped" id="sgt">
-                <thead>
-                   <tr >
-                        <th>Student Name</th>
-                        <th>Course</th>
-                        <th>Grade</th>
-                        <th>Operations</th>
-                   </tr>
-                </thead>
-                <tbody>           
-
-                </tbody>
-             </table>
+    </head>
+<body>      
+    <div class="container-fluid">  
+        <div class="row" id="pageheader">   
+            <div class="col-sm-6 bg"> 
+                <h4> Student Grade Table</h4> 
             </div> 
-            <div class="col-6"> 
-                    <form id="studentform">
-                        <div style="margin:55px 0 0 46px;font-size:20px;display:inline-block;background-color: lightgray; "><i class="fa fa-user" ></i></div><!--
-                        --><div style="display:inline-block"><input type="text" name="name" placeholder="Enter your name"></div><!--
-                        --><div><div style="margin:5px 0 0 43px;font-size: 20px;display:inline-block;background-color: lightgray;"><i class="fa fa-list-alt" ></i></div><!--
-                        --><div style="display:inline-block"><input type="text" name="course" placeholder="Course" size="10"></div>
-                        </div>
-                            <div><div style="margin:5px 0 0 42px;font-size: 20px;display:inline-block;background-color: lightgray"><i class="fa fa-graduation-cap" ></i> </div><!--
-                        --><div style="display:inline-block"><input type="text" name="grade" placeholder="Course" size="10"></div>
-                        </div>
-                        <input style="margin:10px 0 0 70px;background-color: green;" class="btn" type="submit" value="Add">
-                        <input style="border-style:solid black" class="btn" type="reset" value="Cancel">  
-                    </form>
-            </div>    
-         </div>  
+            <div class="col-sm-6 bg" >  
+                <div style="margin:0 0 0 120px" >Average Grade <span class="badge badge-secondary"></span></div>                 
+            </div>
+        </div>       
+        <div class="row">   
+            <div class="col-sm-6 bg">                                        
+                   <table class="table table-striped" id="sgt">
+                        <thead>
+                            <tr >
+                                <th>Student Name</th>
+                                    <th>Course</th>
+                                    <th>Grade</th>
+                                    <th>Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>           
+                
+                        </tbody>
+                    </table>
+            </div>  
+            <div class="col-sm-6 bg">                    
+                    <form id="studentform" style="margin:50px 0 0 50px">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-user" ></i></span>
+                            </div>
+                            <input type="text" name="name" id="studentName" placeholder="Enter the name"  >
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon2"><i class="fa fa-list-alt" ></i></span>
+                            </div>
+                            <input type="text" name="course" id="studentCourse" placeholder="Enter the course"  >
+                          </div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon3"><i class="fa fa-graduation-cap" ></i></i></span>
+                            </div>
+                            <input type="text" name="grade" id="studentGrade" placeholder="Enter the course"  >
+                          </div>
+                          <input style="background-color: rgb(23, 201, 157)" class="btn" type="submit" value="Add" id="submitButton">
+                          <input style="border-style:solid black" class="btn btn-outline-dark" type="reset" value="Cancel">                           
+                    </form>                             
+            </div>
+        </div> 
+    </div>           
 </body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script src="components/app.js"> </script>
 <script src="components/grade-table.js"> </script>
